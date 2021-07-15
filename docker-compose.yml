@@ -20,9 +20,7 @@ services:
     volumes:
       - ./auth-ms/src:/usr/src/app/src
       - ./auth-ms/dist:/usr/src/app/dist
-#      - /usr/src/app/node_modules
     ports:
-      - "3003:3000"
     command: npm run start:dev
   boatbutler:
     build:
@@ -31,13 +29,11 @@ services:
     volumes:
       - ./boatbutler/src:/usr/src/app/src
       - ./boatbutler/dist:/usr/src/app/dist
-#      - /home/node/app/node_modules
     ports:
       - "3000:3000"
     links:
       - redis
       - auth-ms
-#    command: npm run start:dev
     depends_on:
       - redis
       - auth-ms
@@ -58,7 +54,6 @@ services:
     command: npm run start:dev
 
   userms:
-#    image: wiredelta-codechallenge_userms
     container_name: userms
     build:
       context: ./userms
@@ -72,8 +67,6 @@ services:
     volumes:
       - ./userms/src:/usr/src/app/src
       - ./userms/dist:/usr/src/app/dist
-#      - /usr/src/app/node_modules
     ports:
-      - "3002:3000"
     command: npm run start:dev
 
