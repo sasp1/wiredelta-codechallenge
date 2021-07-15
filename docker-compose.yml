@@ -1,7 +1,5 @@
 version: '3.7'
 services:
-
-
   redis:
     image: 'redis'
     ports:
@@ -16,11 +14,9 @@ services:
       - redis
     depends_on:
       - redis
-
     volumes:
       - ./auth-ms/src:/usr/src/app/src
       - ./auth-ms/dist:/usr/src/app/dist
-    ports:
     command: npm run start:dev
   boatbutler:
     build:
@@ -67,6 +63,5 @@ services:
     volumes:
       - ./userms/src:/usr/src/app/src
       - ./userms/dist:/usr/src/app/dist
-    ports:
     command: npm run start:dev
 
