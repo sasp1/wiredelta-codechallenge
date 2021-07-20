@@ -34,13 +34,13 @@ services:
       - redis
       - auth-ms
     command: npm run start:dev
-  jobms:
+  job-management-ms:
     build:
-      context: ./jobms
+      context: ./job-management-ms
       target: development
     volumes:
-      - ./jobms/src:/usr/src/app/src
-      - ./jobms/dist:/usr/src/app/dist
+      - ./job-management-ms/src:/usr/src/app/src
+      - ./job-management-ms/dist:/usr/src/app/dist
     links:
       - redis
       - auth-ms
@@ -49,10 +49,10 @@ services:
       - auth-ms
     command: npm run start:dev
 
-  userms:
-    container_name: userms
+  account-management-ms:
+    container_name: account-management-ms
     build:
-      context: ./userms
+      context: ./account-management-ms
       target: development
     links:
       - redis
@@ -61,7 +61,7 @@ services:
       - redis
       - auth-ms
     volumes:
-      - ./userms/src:/usr/src/app/src
-      - ./userms/dist:/usr/src/app/dist
+      - ./account-management-ms/src:/usr/src/app/src
+      - ./account-management-ms/dist:/usr/src/app/dist
     command: npm run start:dev
 
